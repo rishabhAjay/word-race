@@ -1,0 +1,22 @@
+.homepageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 130px 10% 0 10%;
+}
+
+.homepageLink {
+  padding: 10px 30px 10px 30px !important;
+  margin: 40px 0 40px 0 !important;
+  border: 3px solid #dedede !important;
+  text-decoration: none !important;
+  color: white !important;
+  font-size: large !important;
+}
+
+.homepageBtn {
+  background-color: inherit !important;
+  box-shadow: none !important;
+  font-size: large !important;
+}

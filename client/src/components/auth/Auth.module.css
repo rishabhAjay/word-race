@@ -1,0 +1,33 @@
+.authContainer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  padding: 0 0 50px 0 !important;
+  height: 100% !important;
+}
+
+.logo {
+  border: 5px solid white !important;
+  margin: 0 0 2rem 0 !important;
+}
+
+.authHeader {
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.authCard {
+  margin: 0 25% 0 25% !important;
+}
+
+.authText {
+  margin: 0 0 10px 0 !important;
+  text-align: center !important;
+}
+.btn {
+  margin: 0 auto !important;
+  background-color: #089cff !important;
+  color: white !important;
+  font-size: medium !important;
+}

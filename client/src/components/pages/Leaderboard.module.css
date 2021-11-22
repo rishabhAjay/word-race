@@ -1,0 +1,26 @@
+.leaderboardDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 25% 0 25%;
+}
+
+.tableContainer {
+  margin: 60px 0 40px 0 !important;
+  background-color: #d9d9d9 !important;
+}
+
+.tableCell {
+  text-decoration: underline !important;
+  font-weight: bolder !important;
+}
+
+.homeLink {
+  text-decoration: none !important;
+}
+
+.homeBtn {
+  background-color: #6b0e02 !important;
+  color: white !important;
+  border: 2px solid white !important;
+}
