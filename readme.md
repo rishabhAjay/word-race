@@ -30,6 +30,7 @@ const connectDB = async () => {
 export default connectDB;
 ```
 </br>
+
 **default.json and production.json**
 
 ```json
