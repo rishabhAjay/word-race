@@ -18,9 +18,7 @@ export const loadUser = () => {
     }
     try {
       //load the logged in user details from the token
-      const res = await axios.get(
-        "https://word-race2.herokuapp.com/wordrace/auth"
-      );
+      const res = await axios.get("/wordrace/auth");
 
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (error) {
@@ -41,11 +39,7 @@ export const registerUser = (formData) => {
     };
     try {
       //put the html form data
-      const res = await axios.post(
-        "https://word-race2.herokuapp.com/wordrace/user",
-        formData,
-        config
-      );
+      const res = await axios.post("/wordrace/user", formData, config);
       //payload is the token
       dispatch({ type: REGISTER_SUCCESS, payload: res.data });
 
@@ -69,11 +63,7 @@ export const loginUser = (formData) => {
     };
     try {
       //put the html form data
-      const res = await axios.post(
-        "https://word-race2.herokuapp.com/wordrace/auth",
-        formData,
-        config
-      );
+      const res = await axios.post("/wordrace/auth", formData, config);
       //payload is the token
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
 

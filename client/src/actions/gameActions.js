@@ -12,9 +12,7 @@ export const getLeaderboard = () => {
   return async (dispatch) => {
     try {
       //setLoading sets the loading state to true
-      const res = await axios.get(
-        "https://word-race2.herokuapp.com/wordrace/gamedata"
-      );
+      const res = await axios.get("/wordrace/gamedata");
       dispatch({
         type: GET_LEADERBOARD,
         payload: res.data,
@@ -41,11 +39,7 @@ export const setResult = (score) => {
         },
       };
 
-      const res = await axios.post(
-        "https://word-race2.herokuapp.com/wordrace/gamedata",
-        score,
-        config
-      );
+      const res = await axios.post("/wordrace/gamedata", score, config);
       dispatch({
         type: SET_RESULTS,
         payload: res.data,
