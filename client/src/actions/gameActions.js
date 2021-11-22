@@ -6,7 +6,7 @@ import {
 } from "../actions/types.js";
 import axios from "axios";
 
-//get techs
+
 export const getLeaderboard = () => {
   //in order to specify and dispatch actions, create a function within the action. This will be async since we are handling with the API
   return async (dispatch) => {
@@ -26,7 +26,6 @@ export const getLeaderboard = () => {
   };
 };
 
-//add techs
 export const setResult = (score) => {
   //in order to specify and dispatch actions, create a function within the action. This will be async since we are handling with the API
   return async (dispatch) => {
