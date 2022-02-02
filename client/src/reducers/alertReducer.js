@@ -11,7 +11,6 @@ const alertReducer = (state = initialState, action) => {
         open: action.payload,
       };
     case SET_ALERT:
-      //the state an array
       return {
         ...state,
         open: true,
