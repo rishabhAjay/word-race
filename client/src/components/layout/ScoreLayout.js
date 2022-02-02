@@ -6,7 +6,7 @@ const ScoreLayout = ({ multiplier, symbols }) => {
     <div className={styles.scoreDiv}>
       <p className={styles.scores}>Multiplier: {symbols}</p>
       <p className={styles.scores}>
-        Score: {Math.round((multiplier * symbols) / 2)}
+        Score: {Math.round((multiplier * symbols) / 3)}
       </p>
     </div>
   );

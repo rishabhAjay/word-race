@@ -27,14 +27,6 @@ const MainGame = (props) => {
   //navigation
   const navigate = useNavigate();
 
-  //generate random words
-  const array1 = randomWords({
-    exactly: 500,
-    formatter: (word, index) => {
-      return index === 0 ? word.slice(0, word.length).concat(" ") : word;
-    },
-  });
-
   //if the stack is full, end the game
   useEffect(() => {
     if (array2.length === 6) {
@@ -44,15 +36,22 @@ const MainGame = (props) => {
   }, [array2]);
 
   //keep pushing elements into the array state every 2.5 seconds
+  //keep pushing elements into the array state every 2.5 seconds
   useEffect(() => {
+    //generate random words
+    const array1 = randomWords({
+      exactly: 1000,
+      formatter: (word, index) => {
+        return index === 0 ? word.slice(0, word.length) : word;
+      },
+    });
+
     array1.map((ele, i) => {
       setTimeout(() => {
         setArray2((oldEle) => [...oldEle, ele]);
       }, 2500 * (i + 1));
     });
   }, []);
-
-  //
 
   const saveResult = () => {
     const result = {
@@ -63,8 +62,6 @@ const MainGame = (props) => {
     navigate("/");
   };
 
-  let array3 = array2.join("").split("");
-
   /*
   when the user types in the input box, compare the word that is pushed to the array and the input that is typed which is 
   converted to an array. Any subsequent matches in the string are removed from both the arrays. For every correct word 
@@ -73,17 +70,23 @@ const MainGame = (props) => {
   const onChangeInput = (event) => {
     const input2 = event.target.value;
     setInput(input2);
-    console.log(input2);
-    let input3 = input.concat(" ").split(" ");
-    let array4 = array2.join("").split(" ");
-    setArray2((oldEle) => oldEle.filter((ele, i) => array4[i] !== input3[i]));
-    for (let i = 0; i < array4.length - 1; i++) {
-      if (array4[i] === input3[i]) {
+    let input3 = input
+      .concat(" ")
+      .split(" ")
+      .filter((ele) => ele !== "");
+
+    for (let i = 0; i < input3.length; i++) {
+      if (array2.includes(input3[i])) {
+        for (let j = 1; j < input3[i].length; j++) {
+          setSymbols(symbols + j + 1);
+        }
         setInput(input.replace(input3[i], ""));
         setMultiplier(multiplier + 1);
       }
     }
-    symbolFunc();
+    // symbolFunc();
+
+    setArray2((oldEle) => oldEle.filter((ele) => !input3.includes(ele)));
   };
   const onKeyDown = (event) => {
     if (event.keyCode === 8) {
@@ -91,20 +94,6 @@ const MainGame = (props) => {
     } else if (event.keyCode === 32 && input === "") {
       event.preventDefault();
     }
-  };
-  /*
-  this function increments the symbols variable if the characters match, else it decrements it.
-  */
-  const symbolFunc = () => {
-    array3.map((ele, i) => {
-      if (i < input.length) {
-        if (ele === input.split("")[i]) {
-          return setSymbols(symbols + 1);
-        } else {
-          return setSymbols(symbols > 1 ? symbols - 1 : 1);
-        }
-      }
-    });
   };
 
   return (
@@ -115,21 +104,8 @@ const MainGame = (props) => {
 
         <div className={styles.arrayList}>
           {flag === false &&
-            array3.map((ele, i) => {
-              let color;
-              if (i < input.length) {
-                if (ele === input.split("")[i]) {
-                  color = "#8eff8a";
-                } else {
-                  color = "#ff7575";
-                }
-              }
-
-              return (
-                <span key={i} style={{ backgroundColor: color }}>
-                  {ele}
-                </span>
-              );
+            array2.map((ele, i) => {
+              return <span key={i}>{ele.concat(" ")}</span>;
             })}
         </div>
         <input
@@ -141,7 +117,6 @@ const MainGame = (props) => {
           spellCheck={false}
           readOnly={flag}
         />
-
         <KeyboardLayout />
 
         {flag ? (
