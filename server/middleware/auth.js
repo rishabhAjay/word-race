@@ -1,7 +1,7 @@
 //middleware code
 
 import jwt from "jsonwebtoken";
-import config from "config";
+import { jwtSecret } from "../constants.js";
 const auth = (req, res, next) => {
   //get the token out of the request header
   const token = req.header("x-auth-token");
@@ -12,7 +12,7 @@ const auth = (req, res, next) => {
   }
   try {
     //verify whether the tokens are the same
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, jwtSecret);
     req.user = decoded.user;
     //next allows to continue to the main route after the middleware
     next();

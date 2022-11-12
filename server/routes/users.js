@@ -3,7 +3,7 @@
 import express from "express";
 import User from "../models/Users.js";
 import jwt from "jsonwebtoken";
-import config from "config";
+import { jwtSecret } from "../constants.js";
 const router = express.Router();
 
 /*
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     };
     jwt.sign(
       payload,
-      config.get("jwtSecret"),
+      jwtSecret,
       {
         expiresIn: 360000,
       },

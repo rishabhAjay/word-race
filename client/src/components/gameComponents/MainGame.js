@@ -55,7 +55,7 @@ const MainGame = (props) => {
 
   const saveResult = () => {
     const result = {
-      score: Math.round((multiplier * symbols) / 2),
+      score: Math.round((multiplier * symbols) / 3),
     };
     setResult(result);
     setAlert("Successfully saved", "success");
@@ -80,7 +80,7 @@ const MainGame = (props) => {
         for (let j = 1; j < input3[i].length; j++) {
           setSymbols(symbols + j + 1);
         }
-        setInput(input.replace(input3[i], ""));
+        setInput("");
         setMultiplier(multiplier + 1);
       }
     }

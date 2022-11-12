@@ -1,8 +1,8 @@
 import express from "express";
 import User from "../models/Users.js";
 import jwt from "jsonwebtoken";
-import config from "config";
 import auth from "../middleware/auth.js";
+import { jwtSecret } from "../constants.js";
 const router = express.Router();
 
 /*
@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
     jwt.sign(
       payload,
       //pass the secret
-      config.get("jwtSecret"),
+      jwtSecret,
       {
         //in minutes
         expiresIn: 360000,
